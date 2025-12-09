@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Южный Берег Иссык-Куля</title>
+<style>
+/* ==========================
+   ГЛОБАЛЬНЫЕ СТИЛИ
+========================== */
+:root {
+  --bg-dark: #0d0d0d;
+  --bg-card: #111;
+  --text-light: #f2f2f2;
+  --text-muted: #cfcfcf;
+  --accent: #27c5ff;
+  --radius: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { width: 100%; display: block; border-radius: var(--radius); }
+
+/* ==========================
+   ШАПКА
+========================== */
+header {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+header h1, header p { position: relative; z-index: 2; }
+
+header h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+header p {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  margin-top: 15px;
+  color: var(--text-muted);
+}
+
+/* ==========================
+   НАВИГАЦИЯ
+========================== */
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  padding: 15px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav ul li a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+nav ul li a:hover { color: var(--accent); }
+
+/* БУРГЕР */
+#burger {
+  width: 30px;
+  height: 20px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+#burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--text-light);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* ==========================
+   КОНТЕНТ
+========================== */
+section {
+  padding: 80px 10%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h2 {
+  font-size: 2.3rem;
+  margin-bottom: 35px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--bg-card);
+  padding: 18px;
+  border-radius: var(--radius);
+  transition: 0.3s;
+  border: 1px solid #222;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.card h3 {
+  margin: 12px 0;
+  font-size: 1.3rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ==========================
+   ФУТЕР
+========================== */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0f0f0f;
+  margin-top: 40px;
+  color: var(--text-muted);
+}
+
+/* ==========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================== */
+@media (max-width: 900px) {
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100%;
+    background: #000;
+    padding-top: 100px;
+    flex-direction: column;
+    gap: 25px;
+    transition: 0.35s ease;
+  }
+  nav ul.active { right: 0; }
+
+  #burger { display: flex; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Иссык-Куль</div>
+  <ul id="menu">
+    <li><a href="#oteli">Отели</a></li>
+    <li><a href="#places">Места</a></li>
+    <li><a href="#tours">Туры</a></li>
+  </ul>
+  <div id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<header>
+  <h1>Южный Берег</h1>
+  <p>Лучшие места, отели и отдых в Боконбаево</p>
+</header>
+
+<section id="oteli">
+  <h2>Отели</h2>
+  <div class="cards">
+    <div class="card"><img src="https://images.unsplash.com/photo-1551918120-9739cb430c6a?auto=format&fit=crop&w=900&q=60"><h3>Отель Пляж</h3><p>Красивый вид на озеро, лучший отдых.</p></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&q=60"><h3>Гостевой дом</h3><p>Тишина, уют и домашняя атмосфера.</p></div>
+  </div>
+</section>
+
+<section id="places">
+  <h2>Красивые места</h2>
+  <div class="cards">
+    <div class="card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=60"><h3>Сказка</h3><p>Уникальные каньоны и пейзажи.</p></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1508264165352-258a6f4b74f0?auto=format&fit=crop&w=900&q=60"><h3>Манжылы-Аташ</h3><p>Священные горы и мощная энергетика.</p></div>
+  </div>
+</section>
+
+<section id="tours">
+  <h2>Туры</h2>
+  <div class="cards">
+    <div class="card"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=60"><h3>Конные туры</h3><p>По горам и долинам южного берега.</p></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=900&q=60"><h3>Яркие походы</h3><p>Сложные и лёгкие маршруты.</p></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Южный Берег Иссык-Куля. Все права защищены.
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
+
